@@ -7,13 +7,17 @@ function random() {
     return Math.floor(Math.random() * 160) + 40;
 }
 function App() {
-    const [bpm, setBpm] = useState(0);
+    const [bpms, setBpm] = useState([50]);
 
     useEffect(() => {
         setInterval(() => {
-            setBpm(random);
+            setBpm((prev) =>{
+                return [...prev, random()]
+            });
         }, 1000);
     }, []);
+
+    const bpm = bpms[bpms.length - 1 ];
 
     return (
     <div className="App">
