@@ -2,6 +2,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import HeartRateLive from './components/heartRateLive';
 import { useEffect, useState } from 'react';
+import Graph from './components/graph';
 
 function random() {
     return Math.floor(Math.random() * 160) + 40;
@@ -9,10 +10,20 @@ function random() {
 function App() {
     const [bpms, setBpm] = useState([50]);
 
+    const date = new Date();
+    let hours = date.getHours();
+    let minutes = date.getMinutes();
+    let seconds = date.getSeconds();
+    let time = hours + "h" + minutes +"m"+ seconds+"s"
+
     useEffect(() => {
         setInterval(() => {
             setBpm((prev) =>{
-                return [...prev, random()]
+                const bpm = {
+                    timestamp: time,
+                    heartrate: random()
+                }
+                return [...prev, bpm]
             });
         }, 1000);
     }, []);
@@ -24,7 +35,8 @@ function App() {
       <header className="App-header">
         <h1>Monitoring de rythme cardiaque</h1>
         <img src={logo} className="App-logo" alt="logo" />
-        <HeartRateLive bpm={bpm}/>
+        <HeartRateLive bpm={bpm.heartrate}/>
+        <Graph bpm={bpms}/>
       </header>
     </div>
   );

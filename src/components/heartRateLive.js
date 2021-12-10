@@ -1,8 +1,8 @@
 function heartRateLive(props) {
     const { bpm } = props;
 
+    if (!bpm){return (<p>Aucune valeurs</p>)}
     let classBpm = 'bpmNormal';
-
     if (bpm > 40 && bpm <= 70) {
         classBpm = 'bpmLow';
     }
