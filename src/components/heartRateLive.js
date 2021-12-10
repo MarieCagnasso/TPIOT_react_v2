@@ -1,5 +1,6 @@
-function heartRateLive() {
-    const bpm = Math.floor(Math.random() * 160) + 40;
+function heartRateLive(props) {
+    const { bpm } = props;
+
     let classBpm = 'bpmNormal';
 
     if (bpm > 40 && bpm <= 70) {
