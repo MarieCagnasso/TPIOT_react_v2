@@ -8,15 +8,11 @@
 }
 
 .bpmLow {
-  color: yellow;
+  color: red;
 }
 
 .bpmNormal {
   color: green;
-}
-
-.bpmHigh {
-  color: red;
 }
 
 @media (prefers-reduced-motion: no-preference) {

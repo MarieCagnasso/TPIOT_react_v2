@@ -4,14 +4,14 @@ function heartRateLive(props) {
     let classBpm = 'bpmNormal';
 
     if (bpm > 40 && bpm <= 70) {
-        classBpm = 'bpmHigh';
+        classBpm = 'bpmLow';
     }
     if (bpm > 140 && bpm <= 200) {
         classBpm = 'bpmLow';
     }
 
-    return (<p className={classBpm}>
-            Rythme cardiaque :  {bpm}
+    return (<p>
+            Rythme cardiaque :  <span className={classBpm}>{bpm}</span>
         </p>
     )
 }
